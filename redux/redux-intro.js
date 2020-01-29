@@ -1,5 +1,5 @@
 /**
- * What is redux: is a state container for single page application
+ * What is redux: is a state container for javascript application (single page application)
  *
  * 1. Redux is a predictable store container for js apps
  * 2. It helps to write applications that behave consistantly, run in any environment (client, server and native)

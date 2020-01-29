@@ -71,7 +71,6 @@ const combineReducers = reducers => {
   return (state = {}, action) => {
     return Object.keys(reducers).reduce((nextState, key) => {
       console.log("nextState", nextState);
-      console.log("key", key);
       nextState[key] = reducers[key](state[key], action);
       return nextState;
     }, {});
@@ -81,7 +80,6 @@ const combineReducers = reducers => {
 const reducer = combineReducers({ counter, todos, visibilityFilter });
 const { dispatch, getState, subscribe } = createStore(reducer);
 
-console.log(getState());
 // Counter method
 const counterIncrement = () => {
   before = 0;
