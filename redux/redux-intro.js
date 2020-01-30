@@ -70,3 +70,67 @@
       };
 };
 */
+
+/**
+ * transform-object-rest-spread
+ */
+
+/**
+  * middleware
+  * 1. simple middleware impletement by applyMiddleware
+  * const addLoggingToDispatch = ({ dispatch, getState }) => next => action => {
+    console.group(action.type);
+    console.log("%c previous state", "color:green", getState());
+    console.log("%c action", "color:red", action);
+    console.log("%c next state", "color:green", getState());
+    console.groupEnd(action.type);
+    next(action);
+};
+
+  */
+
+/**
+   * import throttle from "lodash/throttle";
+import { createStore } from "redux";
+import { loadLocalState, saveLocalState } from "./localStorage";
+import reducer from "./reducer";
+
+const addLoggingToDispatch = ({ dispatch, getState }) => {
+  return async action => {
+    console.group(action.type);
+    console.log("%c previous state", "color:green", getState());
+    console.log("%c action", "color:red", action);
+    // const resp = await fetch(action.url);
+    // const data = await resp.json();
+    // dispatch(action.type, action.success(data));
+    const returnValue = dispatch(action);
+    console.log("%c next state", "color:green", getState());
+    console.groupEnd(action.type);
+    return returnValue;
+  };
+};
+
+const configureStore = () => {
+  const persistedState = loadLocalState();
+
+  // root store
+  const store = createStore(reducer, persistedState);
+
+  if (process.env.NODE_ENV !== "production") {
+    store.dispatch = addLoggingToDispatch(store);
+  }
+  store.subscribe(
+    throttle(() => {
+      saveLocalState({
+        todos: store.getState().todos
+      });
+      console.log("%c store state", "color:blue", store.getState());
+    }, 1000)
+  );
+
+  return store;
+};
+
+export default configureStore;
+
+   */
