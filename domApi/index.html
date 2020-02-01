@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+        <a href="#">Hello WOrld</a>
+    </div>
+    <script>
+        const URL = 'https://jsonplaceholder.typicode.com/users'
+        const xml = new XMLHttpRequest();
+        // function reqListener() {
+        //     console.log(this);
+        // }
+        xml.open("GET", URL);
+
+        xml.onreadyStateChange = function (r) {
+            console.log(r.responseText)
+        }
+
+        xml.onprogress = function (res) {
+            console.log('LOADING', xml.readyState, res); // readyState will be 3
+        };
+        xml.send();
+    </script>
+</body>
+
+</html>
