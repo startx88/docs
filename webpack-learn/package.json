@@ -1,0 +1,35 @@
+{
+  "name": "webpack-learn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm-run-all --parallel start build",
+    "start": "nodemon server.js",
+    "build": "webpack --config webpack.config.dev.js src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-react": "^7.8.3",
+    "nodemon": "^2.0.2",
+    "npm-run-all": "^4.1.5",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.4.2",
+    "express": "^4.17.1",
+    "file-loader": "^5.0.2",
+    "node-sass": "^4.13.1",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.3"
+  }
+}
