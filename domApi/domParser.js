@@ -10,12 +10,12 @@
  * String:
  * The DOMString to be parsed. It must contain either HTML, xml, xhtml+xml, or svg document.
  *
- * mimeType	                doc.constructor
+ * mimeType	               doc.constructor
     text/html	            Document
     text/xml	            XMLDocument
-    application/xml	        XMLDocument
+    application/xml	      XMLDocument
     application/xhtml+xml	XMLDocument
-    image/svg+xml	        XMLDocument
+    image/svg+xml	         XMLDocument
  *
  * const doc = parser.parseFromString("<div><h1>Hello World</h1><div>", "text/html");
  * Note: Either "Document" or "XMLDocument" depending on the mimeType argument.
