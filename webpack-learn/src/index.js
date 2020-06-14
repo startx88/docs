@@ -1,4 +1,7 @@
 /** Create Element */
+import Somam from "../public/images/Sonam-Kapoor-in-a-blazer.jpg";
+import "../index.scss";
+
 function createElement(type, props, ...children) {
   return {
     type,
@@ -46,11 +49,17 @@ const Didact = {
 };
 
 /** @jsx Didact.createElement */
-const element = (
-  <div style="background: salmon">
-    <h1>Hello World</h1>
-    <h2 style="text-align:right">from Didact</h2>
-  </div>
-);
+
+const App = () => {
+  return (
+    <div style="background: salmon">
+      <h1>Hello World</h1>
+      <h2 style="text-align:right">from Didact</h2>
+      <img src={Somam} width="100" class="images" />
+    </div>
+  );
+};
+console.log("app", App());
+
 const container = document.getElementById("root");
-Didact.render(element, container);
+Didact.render(App(), container);
