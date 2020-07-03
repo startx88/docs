@@ -122,3 +122,30 @@
  * inspect, clone and create derivative structures using the
  * full power of js
  */
+
+/**
+ * Vue 2 Api:
+ * Render function:
+ * render(h){
+ *   return h('div',
+ *              {
+ *                  attrs:{
+ *                      id:'foo'
+ *                  },
+ *                  on:{
+ *                      click:this.onClick
+ *                  }
+ *               },
+ *          'Hello')
+ * }
+ *
+ * Vue 3 Api:
+ * 1. flat props structure
+ * 2. Global imported 'h' helper
+ *
+ * import {h} from 'vue'
+ * render(){
+ *     return h('div',{id:'foo',onClick:this.onClick},'hello')
+ * }
+ *
+ */
