@@ -1,0 +1,163 @@
+<style>
+  .red {
+    color: red;
+  }
+  .green {
+    color: green;
+  }
+</style>
+<div id="app"></div>
+
+<script>
+  // render phase
+  function h(tag, props, children) {
+    return {
+      tag,
+      props,
+      children,
+    };
+  }
+
+  // mount phase
+  function mount(vnode, container) {
+    const { tag, props, children } = vnode;
+
+    // create an element
+    const el = (vnode.el = document.createElement(tag));
+
+    // props
+    if (props) {
+      Object.keys(props).forEach((key) => {
+        const value = props[key];
+        el.setAttribute(key, value);
+      });
+    }
+
+    // children
+    if (children) {
+      if (typeof children === "string") {
+        el.textContent = children;
+      } else {
+        children.forEach((child) => {
+          if (typeof child === "string") {
+            el.textContent = child;
+          } else {
+            mount(child, el);
+          }
+        });
+      }
+    }
+
+    // append element
+    container.appendChild(el);
+  }
+
+  const vdom = h("div", { class: "red" }, [
+    h("span", { class: "span" }, [
+      "Text String",
+      h(
+        "b",
+        {
+          class: "b",
+        },
+        "Hello WOrld"
+      ),
+      h(
+        "i",
+        {
+          class: "i",
+        },
+        "Hello WOrld"
+      ),
+      h("ul", {}, [h("li", {}, "HELlo")]),
+    ]),
+  ]);
+
+  // render vdom into #app
+  mount(vdom, document.querySelector("#app"));
+
+  // Patch phase to update the dom by comparing old and new dom
+
+  function patch(d1, d2) {
+    // check element
+    if (d1.tag === d2.tag) {
+      const el = (d2.el = d1.el);
+      // check the props
+      const oldProps = d1.props || {};
+      const newProps = d2.props || {};
+      Object.keys(oldProps).forEach((key) => {
+        const oldValue = oldProps[key];
+        const newValue = newProps[key];
+        if (oldValue !== newValue) {
+          el.setAttribute(key, newValue);
+        }
+      });
+      Object.keys(oldProps).forEach((key) => {
+        if (!(key in newProps)) {
+          el.removeAttribute(key);
+        }
+      });
+
+      // children
+      const oldChildren = d1.children;
+      const newChildren = d2.children;
+
+      if (typeof newChildren === "string") {
+        if (typeof oldChildren === "string") {
+          if (oldChildren != newChildren) {
+            el.textContent = newChildren;
+          }
+        } else {
+          el.textContent = newChildren;
+        }
+      } else {
+        if (typeof oldChildren === "string") {
+          el.innerHTML = "";
+          newChildren.forEach((child) => {
+            mount(child, el);
+          });
+        }
+      }
+    } else {
+      const commenLength = Math.min(oldChildren.length, newChildren.length);
+      for (let i = 0; i < commenLength; i++) {
+        patch(oldChildren[i], newChildren[i]);
+      }
+      if (newChildren.length > oldChildren.length) {
+        newChildren.slice(oldChildren.length).forEach((child) => {
+          mount(child, el);
+        });
+      } else if (newChildren.length < oldChildren.length) {
+        oldChildren.slice(newChildren.length).forEach((child) => {
+          el.removeChild(child.el);
+        });
+      }
+    }
+
+    // check the props
+    // check the children
+  }
+
+  const newDom = h("div", { class: "green" }, [
+    h("span", { class: "span" }, [
+      "Text String sdfsdfd",
+      h(
+        "b",
+        {
+          class: "b",
+        },
+        "Hello WOrlddfd"
+      ),
+      h(
+        "i",
+        {
+          class: "i",
+        },
+        "Hello WOrld"
+      ),
+      h("ul", {}, [h("li", {}, "HELlo"), h("li", {}, "List added")]),
+    ]),
+  ]);
+
+  patch(vdom, newDom);
+</script>
