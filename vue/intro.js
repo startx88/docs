@@ -106,3 +106,19 @@
  * and new vnode and old vnode send to the patch page where they compare
  * and changes refelect on the webpage.
  */
+
+
+
+/**
+ * Vertual Dom:
+ * Decouples rendering login from the actual vertual dom - makes
+ * it straightforward to reuse it in non-browser environment,
+ * e.g.
+ * 1. rendering to a string (SSR).
+ * 2. rendering to canvas/WebGL.
+ * 3. Native mobile rendering.
+ *
+ * Provides the ability to programmatically construct,
+ * inspect, clone and create derivative structures using the
+ * full power of js
+ */
