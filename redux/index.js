@@ -1,3 +1,5 @@
+"use strict";
+
 const { createStore } = Redux;
 
 /****
@@ -40,11 +42,3 @@ function addTotos(event) {
   });
   event.target.todo.value = "";
 }
-
-const Counter = () => <h1>Hello World</h1>;
-const render = () => {
-  ReactDOM.render(<Counter />, document.getElementById("root"));
-};
-
-render();
-//store.subscribe(render);
