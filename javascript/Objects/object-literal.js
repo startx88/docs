@@ -1,4 +1,20 @@
 /**
+ * How many ways to create javascript object.
+ * 1. Using literal syntacx
+ *      ex: const user={name:'pradeep', age:31}
+ *
+ * 2. Using Object constructor
+ *      ex: const user = new Object(); create empty object
+ *
+ * 3. Using Object.create() method create an object,
+ *    using an existing object as prototype to the newly created object.
+ *    if object.create(null) then there is no prototype property
+ *
+ * 4. Using function constructor
+ *    const user = function(name, age){ let obj = {}; obj.name=name, obj.age=age; return obj}
+ */
+
+/**
  * Object literal: it is the easiest way to create an object.
  * Object is the combination of function + object
  * at run time js engine add the __proto__ object and type is Object
@@ -129,4 +145,10 @@
 
 /**
  * Object.entries():
+ *
+ */
+
+/**
+ *
+ *
  */

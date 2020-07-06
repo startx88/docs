@@ -1,68 +1,67 @@
 /**
- * What is Object.assign:
- * Object.assign copy all enumrable properties form on or more source object to a target object and return the target object.
- * Ex:1
- */
-
-/**
+ * Object.assign:
+ * 1. Method copies all "enumerable own properties" from one or more source objects to a target object.
+ * 2. Properties in the target object are overwritten by properties in the sources if they have the same key.
+ * 3. The Object.assign() method only copies enumerable and own properties from a source object to a target object
+ * 4. It uses [[Get]] on the source and [[Set]] on the target, so it will invoke getters and setters
+ * 5. Target object can not be null or undefined, if it is then it throws typeError.
+ *
  * Syntax:
- * Object.assign(target, source)
+ * Object.assign(targetObject, ...sourceObjects);
+ *
  */
-
-const obj = {
-    name: "Pradeep",
-    age: 30,
-    salary: 40000,
-    email: "arya.creativemind@gmail.com"
-}
-
-//const target = Object.assign({}, obj);
 
 /**
- * Importants:
- * 1. Properties in the target object are overwritten by properties in the sources if the have the save key.
- * 2. Object.assign() copy only enumrable and own properties from source to target object.
- * 3. it use [[Get]] on the source and [[Set]] on the target, so it will invoke getters and setters
+ * Write pollyfill for es5,
+ * Steps:
+ * 1. Check object.assign is function
+ * 2. add assign property to an object
+ * 3. Writable, configurable property should be true, enumrable false
+ * 4. Value take function with target, and source arguments
+ * 5. check target is not null or undefined
+ * 6. assign target to a variable
+ * 7. loop through the arguments object
+ * 8. assign argument object to new variable
+ * 9. check this variable no to be null or undefined
+ * 10. loop through the new variable and assign keys to target variable
+ * 11. return target variable
  */
 
 
-const obj1 = Object.create(obj);
-
-
-const target = Object.assign({}, obj1);
-target.name = "PPP"
-console.log(target)
-// result will be {} object
-
-/**
- * Write pollyfill, es5 does not support symbols
- */
-
-if (typeof Object.assign !== 'function') {
+if (typeof Object.assign !== "function" || true) {
     Object.defineProperty(Object, "assign", {
-        value: function assign(target, varArgs) {
-            'use strict';
+        writable: true,
+        configurable: true,
+        value: function (target) {
             if (target === null || target === undefined) {
-                throw new TypeError('can not convert null and undefined into an object')
+                throw new TypeError("Can not convert null or undefined to an object")
             }
-            var to = Object(target);
-
-            for (let index = 1; index < arguments.length; i++) {
-                var nextSource = arguments[index];
-                for (let nextKey in nextSource) {
-                    if (nextSource !== null && nextSource !== undefined) {
-                        if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
-                            to[nextKey] = nextSource[nextKey];
+            let to = Object(target); // {}
+            console.log('to', to)
+            for (let index = 1; index < arguments.length; index++) {
+                let next = arguments[index];
+                console.log('next', next)
+                if (next !== null && next !== undefined) { // {name:'pradeep', age:20}
+                    for (let key in next) {
+                        console.log('key', key)
+                        if (Object.prototype.hasOwnProperty.call(next, key)) {
+                            to[key] = next[key]
                         }
                     }
                 }
             }
             return to;
-        },
-        writable: true,
-        configurable: false
+        }
     })
 }
 
+/**
+ * Note:
+ * 1. Object.assign can not use for deep cloaning, it used for shallow coppy.
+ * 2. Properties on the prototype chain and non-enumerable properties cannot be copied.
+ * 3. Primitives will be wrapped to objects.
+ *      a. number, null or undefined will be ingnored
+ *      b. only string wrappers can have own enumerable properties
+ */
 
-
+const s = Object.assign({}, 10) 
