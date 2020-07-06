@@ -118,30 +118,7 @@
  */
 
 
-/**
- * Object.getOwnPropertyDiscriptor():
- * Object.getOwnPropertyDiscriptors():
- * Both method used to returns a property descriptor for an own property, directly present on an object not in prototype
- *
- * Object.defineProperty();
- * Object.defineProperties();
- *
- * Property discriptor divide into two groups:
- * 1. Data discriptors
- * 2. Accessor discriptors.
- *
- * 1. Data discriptors has below properties:
- *    a. enumrable
- *    b. configurable
- *    c. writable
- *    d. value
- *
- * 1. Accessor discriptors has below properties:
- *    a. enumrable
- *    b. configurable
- *    c. get
- *    d. set
- */
+
 
 /**
  * Object.entries():
