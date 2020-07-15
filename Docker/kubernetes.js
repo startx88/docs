@@ -1,6 +1,13 @@
 /**
  * What is kubernetes:
- * it is a tool for running a bunch of different containers.
+ * 1. K8s cluster services
+ * 2. it is a tool for running a bunch of different containers.
+ * 3. Desired State Management
+ *
+ *
+ *
+ *
+ *
  *
  * 1. check kubernetes
  *    cmd: kubectl version
