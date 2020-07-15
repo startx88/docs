@@ -4,7 +4,7 @@
 
     <div class="row">
       <div class="col-sm-12">
-        <h1>Posts</h1>
+        <h1>Posts!!</h1>
         <hr />
       </div>
       <post v-for="post of posts" :key="post.id" :post="post">
