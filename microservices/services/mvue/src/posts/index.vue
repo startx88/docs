@@ -29,21 +29,21 @@ export default {
     AddPost,
     Post,
     AddComment,
-    Comments,
+    Comments
   },
   data() {
     return {
-      posts: [],
+      posts: []
     };
   },
   methods: {
     async getPosts() {
-      const response = await axios.get("http://localhost:4003/posts");
+      const response = await axios.get("http://dev.com/posts");
       const data = await response.data;
       this.posts = Object.values(data);
     },
     async PostAdd(postInfo) {
-      const response = await axios.post("http://localhost:4001", postInfo);
+      const response = await axios.post("http://dev.com", postInfo);
       const data = await response.data;
       if (response.status === 201) {
         this.posts.push(data);
@@ -51,16 +51,16 @@ export default {
     },
     async AddComment(postId, comment) {
       const response = await axios.post(
-        `http://localhost:4002/posts/${postId}/comments`,
+        `http://dev.com/posts/${postId}/comments`,
         { body: comment }
       );
       const data = await response.data;
       this.comments = data;
-    },
+    }
   },
   created() {
     this.getPosts();
-  },
+  }
 };
 </script>
 
