@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mvue-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mvue
+  template:
+    metadata:
+      labels:
+        app: mvue
+    spec:
+      containers:
+        - name: mvue
+          image: startx88/mvue
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mvue-srv
+spec:
+  selector:
+    app: mvue
+  ports:
+    - name: mvue
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
