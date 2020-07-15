@@ -167,7 +167,30 @@
  *
  *
  * Create NodePort Service:
+ * Step:
+ * 1. create post-srv.yaml file inside k8s folder
+ *      apiVersion: v1
+ *      kind: Service
+ *      metadata:
+ *        name: post-srv
+ *      spec:
+ *        type: NodePort
+ *        selector:
+ *          app: posts
+ *        ports:
+ *          - name: posts
+ *            protocol: TCP
+ *            port: 4000
+ *            targetPort: 4000
  *
  *
+ * Accessing NodePort:
+ * 1. kubectl apply -f posts-srv.yaml
+ * 2. kubectl get services
+ *
+ *
+ *
+ * Cluster IP service:
+ * 1.
  */
 

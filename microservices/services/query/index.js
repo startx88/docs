@@ -47,20 +47,15 @@ app.get('/posts', (req, res) => {
 
 app.post('/events', (req, res, next) => {
     const { type, data } = req.body;
-
     handleEvent(type, data);
-
     res.send(posts)
 });
 
 
 app.listen(PORT, async () => {
     console.log('Query services is running...', PORT);
-
-    const res = await axios.get('http://localhost:4005/events');
-
+    const res = await axios.get('http://event-bus-srv:4005/events');
     for (let event of res.data) {
-        console.log('event', event.type);
         handleEvent(event.type, event.data)
     }
 

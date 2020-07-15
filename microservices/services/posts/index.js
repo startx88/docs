@@ -5,7 +5,7 @@ const axios = require('axios')
 const app = express();
 
 // Constants
-const PORT = 4001;
+const PORT = 4000;
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(cors())
@@ -24,7 +24,7 @@ app.post('/', async (req, res, next) => {
         body: body
     }
 
-    await axios.post('http://localhost:4005/events', {
+    await axios.post('http://event-bus-srv:4005/events', {
         type: 'PostCreated',
         data: {
             id,
