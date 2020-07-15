@@ -1,9 +1,7 @@
-FROM node:lts-alpine
+FROM node:lts-alpine 
 
 
 RUN npm install -g http-server
-
-ENV CI=true
 
 WORKDIR /app
 COPY package*.json ./

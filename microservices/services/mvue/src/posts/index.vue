@@ -43,7 +43,10 @@ export default {
       this.posts = Object.values(data);
     },
     async PostAdd(postInfo) {
-      const response = await axios.post("http://dev.com", postInfo);
+      const response = await axios.post(
+        "http://dev.com/posts/create",
+        postInfo
+      );
       const data = await response.data;
       if (response.status === 201) {
         this.posts.push(data);

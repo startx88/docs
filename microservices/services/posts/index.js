@@ -11,11 +11,11 @@ app.use(express.json())
 app.use(cors())
 const posts = {};
 
-app.get('/', (req, res, next) => {
+app.get('/posts', (req, res, next) => {
     res.send(posts)
 });
 
-app.post('/', async (req, res, next) => {
+app.post('/posts/create', async (req, res, next) => {
     const { title, body } = req.body;
     const id = Math.random().toString();
     posts[id] = {
