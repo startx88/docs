@@ -22,5 +22,8 @@
 /**
  * Interface:
  * interfaces in typescript used to define the structure of an object.
+ * 
+ * Basic types in typescript:
+ * 
  */
 
