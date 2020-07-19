@@ -29,9 +29,21 @@
  */
 
 
-
-
 /**
  * What is third party cookie:
  *
+ */
+
+
+/**
+ * Difference between Cookes and JWT's
+ * Cookes:
+ * 1. Transport mechanism
+ * 2. Moves any kind of data between browser and server.
+ * 3. Automatically managed by the browser.
+ *
+ * JWT's:
+ * 1. Authentication/Authorization mechanism
+ * 2. Stores any data we want
+ * 3. We have to manage it mannually
  */

@@ -208,5 +208,14 @@
  * Ingress or Ingress Controller
  * A pod with a set of routing rules to distribute traffice to other service
  *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ * Create a Secret Key: for jwt
+ * kubectl create secret generic jwt-secret --from-literal=jwt=iloavemicroservices
  */
 
