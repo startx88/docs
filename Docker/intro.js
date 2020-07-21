@@ -1,5 +1,10 @@
 /**
  * What is docker:
+ * It is a plateform for developer and system admin to build, run and share application
+ * with containers.
+ *
+ * the use of containers deploy applications is called containerization.
+ *
  * Docker is a platform or ecosystem around creating and running containers.
  *
  *
@@ -11,6 +16,9 @@
  * it is instance of an image, runs a program.
  *
  */
+
+
+
 
 /**
  * Management commands:

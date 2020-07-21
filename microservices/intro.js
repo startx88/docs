@@ -74,15 +74,13 @@
  *      e. The entier request is only as fast ast the slowest request.
  *      f. Can easily introduce webs of requests.
  *
- * 2. Async: Services communicate with each other using events
+ *    Event based ervices communicate with each other (event bus)
  *      a. Conceptually not easy to understand!
  *      b. Service D won't need database
  *      c. Introduces a dependency between services
  *      d. If any inter-servie events fails, the overall request fails or timeout
  *      e. The entier request is only as fast ast the slowest events.
  *      f. Can easily introduce webs of events.
- *
- *
  *
  *  Example:
  *  Service A  =>
@@ -93,7 +91,16 @@
  *  1.  Service emit an event with (type, payload)
  *      event({type:UserQuery, data:{name:'Pradeep'}})
  *  2. Goes to event bus
- *  2. event bus send it to another servcies
+ *  2. event bus send it to another servcies (which required)
+ *
+ *
+ * 2. Async:
+ *      a. Service D has zero dependencies on other services!
+ *      b. Service D will be extremely fase!
+ *      c. Difficult to understand.
+ *      d. Data duplication. paying for extra storage + extra DB
+ *
+ *
  *
  *
  * Pros and Cons of async communication:
