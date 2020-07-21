@@ -1,0 +1,4 @@
+/**
+ * Share logic between services:
+ *
+ */
