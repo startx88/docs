@@ -2,19 +2,26 @@
  * What is docker:
  * It is a plateform for developer and system admin to build, run and share application
  * with containers.
- *
  * the use of containers deploy applications is called containerization.
- *
  * Docker is a platform or ecosystem around creating and running containers.
  *
+ * Docker has two types of containers:
+ * 1. Linux containers
+ * 2. Windows containers
+ *
+ * Default is linux containers, when i say containers i mean linux
  *
  * Docker Server: Tool that is responsible for creating images, running containers, etc.
- *
  * Docker Client : Tools that we are going to issue commands to
  *
  * Containers:
- * it is instance of an image, runs a program.
+ * it is runtime instance of an image, runs a program.
  *
+ *
+ */
+
+/**
+ * 1. Docker info: this command give you lot of information
  */
 
 
@@ -83,6 +90,3 @@
  * wait        Block until one or more containers stop, then print their exit codes
  */
 
-/**
- *
- */
