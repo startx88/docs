@@ -15,14 +15,38 @@
  * Docker Client : Tools that we are going to issue commands to
  *
  * Containers:
- * it is runtime instance of an image, runs a program.
+ * It is runtime instance of an image, runs a program.
  *
+ * docker run hello-world
+ *
+ * run = docker create hello-world + docker start hello-world
  *
  */
 
 /**
  * 1. Docker info: this command give you lot of information
  */
+
+
+/**
+ * Docker system options:
+ * cmd: docker system --help
+ * df      :   Show docker disk usage
+ * events  :   Get real time events from the server
+ * info    :   Display system-wide information
+ * prune   :   Remove unused data
+ */
+
+/**
+ * Docker volume optons:
+ * cmd: docker volume --help
+ * create  :   Create a volume
+ * inspect :   Display detailed information on one or more volumes
+ * ls      :   List volumes
+ * prune   :   Remove all unused local volumes
+ * rm      :   Remove one or more volumes
+ */
+
 
 
 
