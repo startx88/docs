@@ -47,7 +47,27 @@
  * rm      :   Remove one or more volumes
  */
 
+/**
+ * Docker builder options:
+ * cmd: docker config --help
+ * create      Create a config from a file or STDIN
+ * inspect :  Display detailed information on one or more configs
+ * ls      :  List configs
+ * rm      :  Remove one or more configs
+ */
 
+/**
+ * Docker context options:
+ * cmd: docker context --help
+ * create  :   Create a context
+ * export  :   Export a context to a tar or kubeconfig file
+ * import  :   Import a context from a tar or zip file
+ * inspect :   Display detailed information on one or more contexts
+ * ls      :   List contexts
+ * rm      :   Remove one or more contexts
+ * update  :   Update a context
+ * use     :   Set the current docker context
+ */
 
 
 
@@ -71,7 +91,7 @@
  */
 
 /**
- * Docker Commands:
+ * Docker container command:
  * attach      Attach local standard input, output, and error streams to a running container
  * build       Build an image from a Dockerfile
  * commit      Create a new image from a container's changes
