@@ -25,6 +25,8 @@
 
 /**
  * 1. Docker info: this command give you lot of information
+ * 2. docker ps: show specifically runing image (container).
+ * 3.
  */
 
 
@@ -69,7 +71,36 @@
  * use     :   Set the current docker context
  */
 
+/**
+ * Docker image commands:
+ * cmd: docker image --help
+ * build   :   Build an image from a Dockerfile
+ * history :   Show the history of an image
+ * import  :   Import the contents from a tarball to create a filesystem image
+ * inspect :   Display detailed information on one or more images
+ * load    :   Load an image from a tar archive or STDIN
+ * ls      :   List images
+ * prune   :   Remove unused images
+ * pull    :   Pull an image or a repository from a registry
+ * push    :   Push an image or a repository to a registry
+ * rm      :   Remove one or more images
+ * save    :   Save one or more images to a tar archive (streamed to STDOUT by default)
+ * tag     :   Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+ */
 
+/**
+ * Docker network commands:
+ * cmd: docker network --help
+ * connect     :    Connect a container to a network
+ * create      :    Create a network
+ * disconnect  :    Disconnect a container from a network
+ * inspect     :    Display detailed information on one or more networks
+ * ls          :    List networks
+ * prune       :    Remove all unused networks
+ * rm          :    Remove one or more networks
+ *
+ * docker
+ */
 
 /**
  * Management commands:
@@ -134,3 +165,31 @@
  * wait        Block until one or more containers stop, then print their exit codes
  */
 
+
+/**
+ * Docker compose commands:
+ * Commands:
+ * build    :     Build or rebuild services
+ * config   :     Validate and view the Compose file
+ * create   :     Create services
+ * down     :     Stop and remove containers, networks, images, and volumes
+ * events   :     Receive real time events from containers
+ * exec     :     Execute a command in a running container
+ * help     :     Get help on a command
+ * kill     :     Kill containers
+ * logs     :     View output from containers
+ * port     :     Print the public port for a port binding
+ * ps       :     List containers
+ * pull     :     Pull service images
+ * push     :     Push service images
+ * restart  :     Restart services
+ * rm       :     Remove stopped containers
+ * run      :     Run a one-off command
+ * scale    :     Set number of containers for a service
+ * start    :     Start services
+ * stop     :     Stop services
+ * top      :     Display the running processes
+ * unpause  :     Unpause services
+ * up       :     Create and start containers
+ * version  :     Show the Docker-Compose version information
+ */
