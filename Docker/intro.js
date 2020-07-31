@@ -193,3 +193,16 @@
  * up       :     Create and start containers
  * version  :     Show the Docker-Compose version information
  */
+
+/**
+ * Docker compose restart policy:
+ * "no": never attempt to restart this . container if it stops or crashes
+ * "always": if this container stop "for any reason" always attempt to restart it.
+ * "on-failure": Only restart if the container stops with error code.
+ * "unless-stopped": Always restart unless we forcibly stop it.
+ */
+
+/**
+ * Docker for windows:
+ *
+ */
