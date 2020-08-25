@@ -15,3 +15,10 @@
  * How it works:
  *
  */
+
+/**
+ * Que Group:
+ * it is crated inside the channel.
+ * you can name it anything that u want.
+ *
+ */

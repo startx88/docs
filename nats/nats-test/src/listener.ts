@@ -1,22 +1,20 @@
-import nats, { Message } from "node-nats-streaming";
+import nats from "node-nats-streaming";
+import { randomBytes } from "crypto";
+import { CreateDataListener } from "./events/create-data-listener";
 
 console.clear();
-const stan = nats.connect("learning", "123", {
+const stan = nats.connect("learning", randomBytes(4).toString("hex"), {
   url: "http://localhost:4222",
 });
 
 stan.on("connect", () => {
   console.log("Lisenter connected to NATS");
-
-  const subscription = stan.subscribe("data:created");
-
-  subscription.on("message", (msg: Message) => {
-    const data = msg.getData();
-    if (typeof data === "string") {
-      console.log(
-        `Event received #${msg.getSequence()}, data recieved: ${data}`
-      );
-    }
-    msg.ack();
+  stan.on("close", () => {
+    console.log("Nats server is closed");
+    process.exit();
   });
+  new CreateDataListener(stan).listen();
 });
+
+process.on("SIGINT", () => stan.close());
+process.on("SIGTERM", () => stan.close());

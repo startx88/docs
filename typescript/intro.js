@@ -24,3 +24,18 @@
  * interfaces in typescript used to define the structure of an object.
  */
 
+/**
+ * Runtime behavior:
+ * TypeScript is also a programming language that preserves the runtime behavior of JavaScript.
+ *
+ * ex:
+ * Vividing by zero in JavaScript produces "Infinity" instead of throwing a runtime exception.
+ * Note: As a principle, TypeScript never changes the runtime behavior of JavaScript code.
+ */
+
+/**
+ * Erased Types: Roughly speaking
+ * 1. Once TypeScript’s compiler is done with checking your code.
+ * 2. It erases the types to produce the resulting “compiled” code.
+ * 3. This means that once your code is compiled, the resulting plain JS code has no type information
+ */
