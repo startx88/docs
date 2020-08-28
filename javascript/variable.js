@@ -32,20 +32,57 @@ function foo() {
 }
 foo();
 
-/** 
+/**
  * A variable declared using var is added as a non-configurable
  * property of the global object.
- * 
- * This means its property descriptor cannot be changed and it 
+ *
+ * This means its property descriptor cannot be changed and it
  * cannot be deleted, using delete
+ *
+ * The corresponding name is also added to a list on the internal [[VarNames]]
+ *
+ * slot on the global environment record (which forms part of the global lexical environment)
+ *
+ * The list of names in [[VarNames]] enable the runtime to distinguish
+ * between global variable and straightforward properties on the global object.
+ *
+ * Example:
+ * 'use strict';
+ *
+ * var a=1;
+ * globalThis.hashOwnProperty('a') // true
+ * delete globalThis.a // TypeError in strict mode, Fails silently otherwise
+ * delete a; // SyntaxError in strict mode, Fails silently otherwise
  */
 
-
+/**
+ * Unqualified identifiers assignment:
+ * The global objects sits on the top of the scope chain.
+ * When attemting to resolve a name to a value, the scope chain is searched.
+ *
+ * Example:
+ *
+ * Non strict mode:
+ * a=0;
+ * console.log(a) // output 0
+ * globalThis.hasOwnProperty(a) // return true
+ *
+ * Strict mode:
+ * Throw a ReferenceError, a is not defiend,
+ * to avoid the accidental creation of properties on the global object.
+ *
+ * 'use strict';
+ * a=0;
+ * console.log(a) // output 0
+ * globalThis.hasOwnProperty(a) // return true
+ *
+ */
 
 /**
  * What is hoisting in js:
  * It is javascript default behavior.
- * Hoisting is a process of vertually moving the variable and function defination to the begining of the scope.
+ * Hoisting is a process of vertually moving the variable and
+ * function defination to the begining of the scope.
  *
  * Javascript only hoist declaration, not the initialization
  *
@@ -61,19 +98,44 @@ foo();
  * a variable is declared and initialized at the beginning of the function scope.
  * There is no gap between declaration and initialization phases.
  *
+ * Example: 1
+ *
+ * a=10;
+ * var a;
+ *
+ * simple understood as:
+ * var a;
+ * a=10;
+ *
+ * Example: 2
+ *
+ * console.log(a) // undefined value
+ * a=10;
+ * var a;
+ *
+ * simple understood as:
+ * var a;
+ * console.log(a) // undefined value
+ * a=10; // assignment
+ *
+ * Example: 3
+ *
  */
 
-/** Examples: **/
-console.log(x) // x is undefined (declaration/initialization phase)
-var x;
-x = 90 // assignment phase
+/**
+ * Javascript only hoist declaration, not the initialization
+ *
+ * Example:
+ * console.log(y) // ReferenceError, there is no declration
+ * y = 10;
+ *
+ * */
 
-/** Javascript only hoist declaration, not the initialization */
-console.log(y) // ReferenceError, there is no declration
-y = 10;
 
 
-
+/**
+ *
+ */
 
 
 /**

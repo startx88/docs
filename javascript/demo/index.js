@@ -1,3 +1,4 @@
 'use strict'
-foo = '1'
-console.log(foo)
+console.log(a)
+a = 'hello'
+var a;
