@@ -131,12 +131,31 @@ foo();
  *
  * */
 
-
-
 /**
+ * Declaring and initializing two variables:
+ * var a=1, b=2;
+ *
+ * Assigning two variables with single variable;
+ *
+ * var a='1';
+ * var b = a;
+ *
+ * ... is equavalent to
+ * var a, b = a = 1;
+ *
+ * Be mindfull of the order
+ * var a=b, b=1;
+ *
+ * understood as:
+ *
+ * var a;
+ * var b;
+ * a=b;
+ * b=1;
+ *
+ * console.log(a+b) // undefined1
  *
  */
-
 
 /**
  * Js variable lifecycles:
@@ -256,13 +275,31 @@ foo();
  * the variable is in temporal dead zone and is not accessible.
  */
 
-
-
-
-
 /**
  * undeclared: the variable is not declare in any scope.
  * undefined: variable is declared but at the time it has no value.
  * uninitialized (TDZ):  it comes with es6,
  */
 
+
+
+
+
+
+/**
+ * Coercion:
+ * Converting a value from on type to another type is offen called "type casting,", when done implictly.
+ *
+ * Type Casting:
+ * Converting a value from on type to another type is offen called "type casting,", when done explictly.
+ *
+ * Note:
+ * 1. “type casting” (or “type conversion”) occurs in statically typed languages at compile time.
+ * 2. while “type coercion” is a runtime conversion for dynamically typed languages.
+ *
+ *
+ * ToString:
+ * When a non-string value is coerced to a string represention, the conversion is handled
+ * by toString abstract operation.
+ *
+ */

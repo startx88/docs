@@ -1,4 +1,12 @@
-'use strict'
-console.log(a)
-a = 'hello'
-var a;
+
+
+var obj = {
+  a: 5,
+  print() {
+    console.log(this.a)
+  }
+}
+
+const m = obj.print
+
+m()
