@@ -11,7 +11,6 @@
  *
  */
 
-
 /**
  * What is an execution content in JS:
  * 1. Lexical Environment {Scope}

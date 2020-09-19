@@ -1,5 +1,7 @@
 const crypto = require('crypto');
 
+process.env.UV_THREADPOOL_SIZE = 5
+
 const start = Date.now();
 crypto.pbkdf2('Admin12345', 'b', 100000, 512, 'sha512', () => {
   console.info('1:', Date.now() - start)
@@ -21,7 +23,7 @@ crypto.pbkdf2('Admin12345', 'b', 100000, 512, 'sha512', () => {
   console.info('5:', Date.now() - start)
 })
 
-
+console.log(process.env.UV_THREADPOOL_SIZE)
 // let see the diagram
 /**
  *  Javascript Code we write
