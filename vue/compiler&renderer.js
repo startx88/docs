@@ -13,7 +13,7 @@
  */
 
 function render() {
-    return history('div', [
+    return h('div', [
         h('div', [
             h('span', 'Hello')
         ])
