@@ -11,3 +11,38 @@
  * 3. Run docker-compose down && docker-compose up --build
  *
  */
+
+/**
+ * Docker compose commands:
+ * build       :    Build or rebuild services
+ * convert     :    Converts the compose file to platform's canonical format
+ * create      :    Creates containers for a service.
+ * down        :    Stop and remove containers, networks
+ * exec        :    Execute a command in a running container.
+ * kill        :    Force stop service containers.
+ * logs        :    View output from containers
+ * ls          :    List running compose projects
+ * pause       :    pause services
+ * ps          :    List containers
+ * pull        :    Pull service images
+ * push        :    Push service images
+ * rm          :    Removes stopped service containers
+ * run         :    Run a one-off command on a service.
+ * start       :    Start services
+ * stop        :    Stop services
+ * unpause     :    unpause services
+ * up          :    Create and start containers
+ *
+ *
+ * Flags:
+ *     --env-file string       Specify an alternate environment file.
+ * -f, --file stringArray      Compose configuration files
+ * -h, --help                  help for compose
+ *     --profile stringArray   Specify a profile to enable
+ * -p, --project-name string   Project name
+ *     --workdir string        Specify an alternate working directory
+ */
+
+/**
+ *
+ */
