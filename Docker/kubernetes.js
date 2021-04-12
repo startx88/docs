@@ -7,8 +7,6 @@
  *
  *
  *
- *
- *
  * 1. check kubernetes
  *    cmd: kubectl version
  *
