@@ -1,4 +1,6 @@
 /**
+ * https://developer.mozilla.org/en-US/docs/Learn/JavaScript
+ * https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript
  * What is Javascript:
  * 1.   Javascript is lightweight, interpreted or Just in time compile language.
  * 2.   Compiled language with first class function.
@@ -40,4 +42,18 @@
  *
  *
  * * Return a function
+ * Ex:
+ * function sayHello() {
+ *      return function() {
+ *          console.log("Hello!");
+ *      }
+ *  }
+ *
+ * Note: A function that returns a function is called a Higher-Order Function.
+ *
+ */
+
+
+/**
+ * What is JavaScript doing on your page?
  */
