@@ -1,4 +1,11 @@
 /**
+ * What is ngrx:
+ * 1. @ngrx is a state management library to provide angular to create reactive application.
+ * 2. Managing global and local state., a single source of truth
+ * 3. Isolation of side effects to promote a cleaner component architecture..
+ * 4. Entity collection management.module
+ * 5. Integration with the Angular Router.
+ *
  * --------------------------------------------------------
  *  How ngrx/router-store works:
  * --------------------------------------------------------
