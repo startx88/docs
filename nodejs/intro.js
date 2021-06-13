@@ -2,7 +2,22 @@
  * What is nodejs:
  * It is a javascript run-environment built on top of chroms v8 engine.
  *
+ * Single threaded
+ * Event driven
+ * Non-blocking
+ * I/O model
+ *
+ * Perfect for building fast and scalabe data-intensive apps.
+ *
+ *
  */
+
+
+
+
+
+
+
 
 /**
  * How node works internally:
@@ -44,6 +59,14 @@
  *
  */
 
+
+/********
+ * Read file async:
+ * fs.readFile(path.join(__dirname, 'my.txt'), 'utf-8', (error, res) => {
+ *   if (error) return;
+ *   console.log(res)
+ * })
+ */
 
 /**
  * node event loop =======> single threaded
