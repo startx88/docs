@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+
+    var myObj = {
+      myMethod: function () {
+        console.log('globalThis: ', globalThis)
+        console.log('this inside: ', this)
+        console.log(globalThis === this)
+        console.log(myObj === this)
+      }
+    }
+
+    //myObj.myMethod()
+
+    // var myObj = {
+    //   myMethod: function () {
+    //     console.log(this)
+    //   }
+    // }
+
+    var myFunc = myObj.myMethod
+    myFunc()
+  </script>
+</body>
+
+</html>

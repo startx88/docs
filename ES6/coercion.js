@@ -21,4 +21,55 @@
  * 2. "string" =====> toString(), valueOf()
  *
  *
+ * toString: on primitive type
+ *
+ * false.toString() => "false"
+ * true.toString() => "true"
+ * undefined.toStrng() => "undefined"
+ * null.toString() => "null"
+ * 0.toString() => "0"
+ * -0.toString() => "0"
+ *
+ * toString: on reference type
+ *
+ * [].toString() => ""
+ * [1,2,3].toString() => "1,2,3"
+ * [null,undefined].toString() => ","
+ * [[[],[],[]].toString() => ",,,"
+ * [,,,].toString() => ",,,"
+ *
+ * {}.toString() => "[object Object]"
+ * {a:2}.toString() => ["object Object"]
+ *
+ *
+ *
+ * toNumber: on primitive type
+ * Number("") => 0
+ * Number("0") => 0
+ * Numebr("-0") => 0
+ * Number(" 0009 ") => 9
+ * Number("3.456") => 3.456
+ * Number("0.") => 0
+ * Number(".0") => 0
+ * Number(".") => NaN
+ * Number("0xaf") => 175
+ * Number(false)=> 0
+ * Number(true)=> 1
+ * Number(null) => 0
+ * Number(undefined)=>NaN
+ *
+ * Number([]) => 0
+ *
+ *
+ *
+ * toBoolean: below are falsy value
+ * 1. false
+ * 2. null
+ * 3. undefined
+ * 4. ""
+ * 5. 0
+ * 6. -0
+ * 7. NaN
+ *
+ *
  */
