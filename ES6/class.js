@@ -195,3 +195,43 @@ const d = new Doc("Pamerian");
  * 3. So multiple inheritance from tooling classes, for example, is not possible.
  *    The functionality must be provided by the superclass.
  */
+
+
+const Parent = Base => class extends Base {
+  init() {
+    console.log('mixins initialize')
+  }
+}
+
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+  speak() {
+    return `${this.name} can speak`;
+  }
+  eat() {
+    return `${this.name} can eat`;
+  }
+  sleep() {
+    return `${this.name} can sleep`;
+  }
+}
+
+
+class Dog extends Parent(Animal) {
+  constructor(bread) {
+    this.bread = bread;
+  }
+  // method overriding
+  speak() {
+    console.log('method overriding')
+  }
+  // call super class method
+  eat() {
+    super.eat();
+  }
+}
+
+const d = new Doc("Pamerian");
+d.init()
