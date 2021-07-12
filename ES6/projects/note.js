@@ -1,48 +1,60 @@
-
 const brand = document.getElementById("brand");
 const result = document.getElementById("result");
 const error = document.getElementById("error");
 error.style.display = "none";
 
-
 // Storage class
 class Storage {
+  // key
+  constructor(key) {
+    this.key = key;
+  }
   // get notes
-  get getNotes() {
-    return JSON.parse(localStorage.getItem("notes")) ?? [];
+  get getData() {
+    return JSON.parse(localStorage.getItem(this.key)) ?? [];
   }
   // static add into local memory
-  addIntoLocalMemory(notes) {
-    localStorage.setItem('notes', JSON.stringify(notes));
+  setData(data) {
+    localStorage.setItem(this.key, JSON.stringify(data));
   }
-
   // remove from local memory
-  removeItemFromMemory(id) {
-    const notes = this.getNotes.filter(note => note.id !== id);
-    this.addIntoLocalMemory(notes);
+  removeData(id) {
+    const data = this.getData.filter(note => note.id !== id);
+    this.setData(data);
+  }
+  clearData() {
+    localStorage.clear();
   }
 }
 
 // notes
-class Notes extends Storage {
-  constructor() {
-    super();
-    this.notes = this.getNotes
+class Dataset extends Storage {
+  constructor(key) {
+    super(key);
+    this.data = this.getData;
+    this.editing = false;
+    this.editData = {}
   }
 
   // add notes
-  addNote(note) {
-    const hasNote = this.notes.length > 0 && this.notes.find(n => n.title.toLowerCase() === note.title.toLowerCase());
-    if (hasNote) throw new Error("note already existed");
-    this.notes.push(note);
-    this.addIntoLocalMemory(this.notes);
+  add(item) {
+    const hasData = this.data.length > 0 && this.data.find(n => n.title.toLowerCase() === item.title.toLowerCase());
+    if (hasData) throw new Error("item already existed!");
+    this.data.push(note);
+    this.setData(this.data);
+  }
+
+  // edit item
+  edit(id) {
+    const data = this.getData;
+    const item = data.find(item => item.id === id);
+    this.editData = item;
   }
 
   // remove notes
-  remoteNote(id) {
-    this.notes = this.notes.filter(n => n.id !== id);
-    this.removeItemFromMemory(id);
-
+  remove(id) {
+    this.data = this.data.filter(item => item.id !== id);
+    this.removeData(id);
   }
 
   // validation
@@ -53,65 +65,131 @@ class Notes extends Storage {
       error.innerHTML = str;
       setTimeout(() => {
         error.style.display = 'none';
-        error.innerHTML = ""
+        error.innerHTML = "";
       }, 3000)
       return true;
     }
   }
 
-  // display notes
 
-  displayNoteItem(el, note, container) {
-    el.innerHTML = `
-    <div class="card">
-       <div class="card-body">
-          <h5 class="card-title">${note.title}</h5>
-          <p class="card-text">${note.description}</p>
-          <button class="btn btn-danger btn-sm"> Delete</button >
-      </div>
-      </div>
-      `
-    el.querySelector("button").setAttribute('id', note.id)
-    container.appendChild(el);
+  render(fn) {
+    Object.defineProperties(this, {
+      data: {
+        get() { }, 
+        set() { }
+      },
+      editData: {
+        get() { }, set() {
+          fn()
+        }
+      },
+      editing: {
+        get() {
+          console.log('hello');
+        },
+        set() {
+          console.log('hello set');
+          fn();
+        }
+      }
+    })
   }
-
-
-  // initialize
-  init() {
-    const notes = this.getNotes;
-    const parentEl = document.createElement("div");
-    parentEl.classList.add('row');
-    for (let item of notes) {
-      const el = document.createElement("div");
-      el.classList.add('col-md-3');
-      this.displayNoteItem(el, item, parentEl);
-      // el.querySelector("#" + item.id).addEventListener("click", this.remoteNote(item.id))
-    }
-    result.append(parentEl);
-  }
-
 }
+
+
+
+
+
+// note instance
+const note = new Dataset('notes');
 
 // single note
 class Note {
-  constructor(title, description) {
-    this.id = Math.random().toString();
+  constructor(title, description, id) {
+    this.id = id ?? Math.random().toString();
     this.title = title;
     this.description = description;
   }
 }
 
-// notes istance
-const note = new Notes();
-
-// save notes
-function onSaveNote(event) {
+// add notes
+function saveNote(event) {
   event.preventDefault();
   const { description, title } = event.target;
   note.validations([title, description]);
-  note.addNote(new Note(title.value, description.value));
-  note.init();
+  if (note.editing) {
+    note.add(new Note(title.value, description.value, note.editData.id));
+  } else {
+    note.add(new Note(title.value, description.value));
+  }
+  description.value = "";
+  title.value = "";
 }
 
+
+
+// render note item
+function renderNoteItem(el, record, container) {
+  el.innerHTML = `
+    <div class="card">
+       <div class="card-body">
+          <h5 class="card-title">${record.title}</h5>
+          <p class="card-text">${record.description.substr(0, 100)}... <a href="#">Read more</a></p>
+          <hr/>
+          <button class="btn btn-info btn-sm">Edit</button>
+          <button class="btn btn-danger btn-sm">Delete</button>
+      </div>
+      </div>
+      `
+  el.id = record.id;
+  const btns = Array.from(el.querySelectorAll("button"));
+  btns[0].addEventListener("click", () => {
+    note.editing = true;
+    note.edit(record.id);
+  });
+  btns[1].addEventListener("click", () => {
+    console.log(record.id);
+    note.remove(record.id);
+    document.getElementById(record.id).remove();
+  });
+  container.appendChild(el);
+}
+
+
 // initialize
-note.init();
+function init() {
+  const data = note.getData;
+  const parentEl = document.createElement("div");
+  parentEl.classList.add('row');
+  for (let item of data) {
+    const el = document.createElement("div");
+    el.classList.add('col-md-3');
+    renderNoteItem(el, item, parentEl);
+  }
+  result.append(parentEl);
+}
+
+// function onEditNote(note) {
+//   const form = document.querySelector("#note-form");
+//   form.title.value = note.title;
+//   form.description.value = note.description;
+// }
+
+
+// function onFill(event) {
+//   const value = event.target.value;
+//   if (value == 'lorem') {
+//     event.target.value = "Lacus voluptatibus, tortor sodales laborum provident ad maecenas earum? Potenti dapibus. Risus. Volutpat, sapiente cubilia diam inceptos sed, enim dictum expedita quos qui cillum, impedit erat ullamcorper, pharetra. Id laborum proin ducimus. Elit soluta. Quisquam similique. Tempor egestas, consequatur, debitis, reprehenderit nostra! Hendrerit impedit, explicabo facere fuga ipsam? Veritatis sem excepturi laboriosam recusandae, occaecati expedita sapien, suscipit dolores totam in, corporis quidem rerum, elementum, hendrerit ante amet repudiandae etiam? Recusandae, reprehenderit eu, provident suspendisse placerat sociis explicabo error veritatis, voluptatibus magni ullam diamlorem expedita elit dui incidunt, vulputate?"
+//   }
+// }
+
+// render
+function render(fn) {
+  //fn();
+}
+
+
+
+
+
+note.render(init)
