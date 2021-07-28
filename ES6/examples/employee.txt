@@ -1,0 +1,1 @@
+[{"namge":"John","age":25,"email":"jhon@gmail.com","salary":5000},{"namge":"Suraj","age":27,"email":"suraj.k@gmail.com","salary":25000},{"namge":"Kiran","age":22,"email":"kiran@gmail.com","salary":15000}]
