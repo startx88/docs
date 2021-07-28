@@ -8,6 +8,7 @@ const reset = document.querySelector("#reset");
 reset.style.display = 'none';
 
 class Status {
+
   error(msg) {
     message.textContent = msg
   }
@@ -51,20 +52,16 @@ function guessValue() {
     reset.style.display = 'block';
   } else {
     score.textContent = game.score;
+    score.style.width = (100 - 5) + '%'
   }
-
-
-
   if (game.score == 0) {
     reset.style.display = 'block';
+    message.textContent = "You lost, please try again";
   }
 }
 
-reset.addEventListener("click", function () {
+reset.addEventListener("click", reload);
+function reload() {
   location.reload();
-});
+}
 
-
-
-
-console.log(game);
