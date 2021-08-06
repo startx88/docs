@@ -1,1 +1,3 @@
-console.log('hello world 1');
+import Image from './components/Image';
+
+document.body.appendChild(Image());
