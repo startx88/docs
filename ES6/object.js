@@ -83,3 +83,7 @@ user.age = 22;
 //}
 
 // using array 
+
+
+// Favor composition over inheritance
+

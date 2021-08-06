@@ -1,0 +1,140 @@
+// colors
+$white: #fff !default;
+$black: #000 !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$blue: #007bff !default;
+$indigo: #6610f2 !default;
+$purple: #7750f8 !default;
+$pink: #ff3167 !default;
+$red: #dc3545 !default;
+$orange: #fc8019 !default;
+$yellow: #ffc107 !default;
+$green: #28a745 !default;
+$teal: #20c997 !default;
+$cyan: #17a2b8 !default;
+$info: #0da9ef !default;
+
+$body-bg: #f4f7fc !default;
+$gray-f1: #f1f1f1 !default;
+$text-color: #374250 !default;
+$text-color-light: #757a95 !default;
+
+$primary: #fc8019 !default;
+$parimary-light: rgba($primary, 55%) !default;
+$primary-dark: rgba($primary, 5%) !default;
+
+$wraning: $yellow !default;
+$warning-light: #fed700 !default;
+$warning-dark: '' !default;
+
+$danger: $red !default;
+$danger-light: #e74c3c !default;
+$danger-dark: #ff0000 !default;
+
+$success: $green !default;
+
+$banner-color: #171a29 !default;
+// global settings
+$global-height: 100vh !default;
+$global-width: 100% !default;
+$base-size: 0.9rem; // 14px
+$base-family: 'Roboto', sans-serif !default;
+$raleway: 'Raleway', sans-serif !default;
+$line-height: 1.4 !default;
+$letter-space: 0.02rem !default;
+
+$font-light: 300;
+$regular: 400;
+$semi-500: 500;
+$semi-600: 600;
+$bold: 700;
+
+// headings
+$h1: $base-size * 2 !default; // 28px
+$h2: $base-size * 1.65 !default; // 24px
+$h3: $base-size * 1.57 !default; // 22px
+$h4: $base-size * 1.2857 !default; // 18px
+$h5: $base-size * 1.0714 !default; // 15px
+$h6: $base-size !default;
+
+$link-color: $orange;
+$link-hover-color: darken($orange, 15%);
+
+// table
+$table-head-bg: $body-bg;
+$table-border-color: #dce7f7;
+
+// Avatar
+$avatar-shadow: 1px 0px 20px rgba(0, 0, 0, 0.2) !default;
+$avatar-sizes: (
+  xs: 35px,
+  sm: 45px,
+  md: 55px,
+  ml: 80px,
+  lg: 100px,
+  xl: 150px,
+  full: '100%',
+) !default;
+
+// alert
+$alert-sizes: (
+  xs: 250px,
+  sm: 350px,
+  md: 400px,
+  lg: 100%,
+) !default;
+
+// breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1300px,
+) !default;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1240px,
+);
+
+$paragraph: (
+  xs: 0.75rem,
+  sm: $base-size,
+  md: 1rem,
+  lg: 1.2857rem,
+) !default;
+
+// width
+
+$widths: (
+  w-100: 100px,
+  w-150: 150px,
+  w-200: 200px,
+  w-300: 300px,
+  w-400: 400px,
+  w-500: 500px,
+  w-600: 600px,
+  w-700: 700px,
+  w-800: 800px,
+  w-full: 100%,
+) !default;
+
+$font-family: (
+  roboto: $base-family,
+  raleway: $raleway,
+) !default;
+
+// modals
+$modal-content-padding: 20px !default;
+$modal-transition: all 300ms linear !default;

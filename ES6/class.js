@@ -88,7 +88,8 @@ class Person {
   }
 }
 
-// it convert into this behind the scenes
+/* 
+** Above class is convert into this.
 function Person(name, age) {
   this.name = name;
   this.age = age;
@@ -100,7 +101,7 @@ Person.prototype.speak = function () {
 
 Person.detail = function (obj) {
   return `my name is ${obj.name} and im am ${obj.age} years old`
-}
+} */
 
 /**
  * Public field declaration:
@@ -169,6 +170,7 @@ class Animal {
 
 class Dog extends Animal {
   constructor(bread) {
+    super();
     this.bread = bread;
   }
 
@@ -235,3 +237,6 @@ class Dog extends Parent(Animal) {
 
 const d = new Doc("Pamerian");
 d.init()
+
+
+// class

@@ -104,3 +104,37 @@ useIt(r);
 
 const s = new Square(5);
 useIt(s);
+
+
+
+
+
+const SpeciesType = Object.freeze({
+  Animal: 'animal',
+  Human: 'human',
+  Bird: 'bird'
+})
+
+class Species {
+  constructor(type, name, speed) {
+    this.type = type;
+    this.name = name;
+    this.speed = speed;
+  }
+
+  eat() {
+    console.log(`${this.type} - ${this.name} can eat`);
+  }
+
+  run() { 
+
+  }
+
+  fly() {  
+
+  }
+
+  swim() { 
+
+  }
+}

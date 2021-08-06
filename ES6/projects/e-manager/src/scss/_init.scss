@@ -1,0 +1,17 @@
+html {
+  min-height: 100vh;
+}
+body {
+  font-size: $base-size;
+  font-family: $base-family;
+  display: flex;
+  flex-direction: column;
+
+  #root,
+  #app {
+    display: flex;
+    flex-direction: column;
+    min-height: inherit;
+  }
+}
+

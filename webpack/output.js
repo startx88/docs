@@ -1,6 +1,17 @@
 /**
  * Output: How to write the compiled file into disk.
  * Note that: while there can be multiple entry points, only one output configuration is specified.
+ * 
+ * 
+ * filename:
+ *  [name].js
+ *  [id].js
+ *  [name].[chunkhash].js
+ *  [contenthash].js
+ *  [chunkhash].js 
+ *  [hash].js
+ *  [fullhash].js
+ * 
  */
 
 // webpack.config.js
