@@ -118,3 +118,51 @@ module.exports = {
 // using inline images
 import metroMap from './images/metro.svg';
 block.style.background = `url(${metroMap})`; // url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDo...vc3ZnPgo=)
+
+/*******
+ * General asset type:
+ * 
+ * Now webpack will automatically choose between resource and inline by following a default 
+ * condition: a file with size less than 8kb will be treated as a inline module type and resource module type otherwise.
+ * 
+ * You can change this condition by setting a Rule.parser.dataUrlCondition.maxSize option on the module rule level of your webpack configuration:
+ * */
+const path = require('path');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.txt/,
+        type: 'asset',
+      }
+    ]
+  },
+};
+
+// change condition
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.txt/,
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 4 * 1024 // 4kb
+          }
+        }
+      }
+    ]
+  },
+};

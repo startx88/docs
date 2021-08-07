@@ -1,0 +1,4 @@
+{"_id":{"$oid":"610e6d8685c5cefd24223558"},"name":"Pradeep","salary":80000.0,"email":"pradeep@gmail.com"}
+{"_id":{"$oid":"610e6d9785c5cefd24223559"},"name":"Arun","age":30.0,"salary":10000.0,"email":"arun@gmail.com"}
+{"_id":{"$oid":"610e6dce85c5cefd2422355a"},"name":"Sanjeev","age":31.0,"salary":56000.0,"email":"sanjeev@gmail.com"}
+{"_id":{"$oid":"610e6dce85c5cefd2422355b"},"name":"Priyanka","age":28.0,"salary":45000.0,"email":"priyanka@gmail.com"}
