@@ -79,7 +79,7 @@
  *
  * JSON:
  * 1. Importing:
- *     mongoimport --uri="mongodb+srv://<your username>:<your password>@<your cluster>.mongodb.net/sample_supplies" --drop sales.json
+ *     mongoimport sales.json -d database -c collection --jsonArray --drop
  * 2. Exporting:
  *    mongoexport --uri="mongodb+srv://<your username>:<your password>@<your cluster>.mongodb.net/sample_supplies" --collection=sales --out=sales.json
  *
@@ -96,14 +96,35 @@
  *
  *
  * Data explorer:
- * 
+ *
  * */
 
 
 
 
 /***
- * Db help:
+ * MongoDB limits and threshold:
+ *
+ * 1. BSON document size is 16 megabytes.
+ *    The maximum document size helps ensure that a single document cannot use excessive amount of RAM or, during transmission, excessive amount of bandwidth.
+ *    To store documents larger than the maximum size, MongoDB provides the GridFS API.
+ *
+ * 2. Nested Depth for BSON Documents:
+ *    MongoDB supports no more than 100 levels of nesting for BSON documents.
+ *
+ * 3. Naming Restrictions:
+ *    1. Database:
+ *      a. Database Name Case Sensitivity: Since database names are case insensitive in MongoDB
+ *      b. Restrictions on Database Names for Windows: For MongoDB deployments running on Windows, database names cannot contain any of the following characters:
+ *         /\. "$*<>:|?, Also database names cannot contain the null character.
+ *      c. Length of Database Names: Database names cannot be empty and must have fewer than 64 characters.
+ *   2. Collection:
+ *      a. Collection names should begin with an underscore or a letter character.
+ *         can not use
+ *         aa. contain the $.
+ *         ab. be an empty string (e.g. "").
+ *         ac. contain the null character.
+           ad. begin with the system. prefix. (Reserved for internal use.)
  *
  * */
 

@@ -19,5 +19,9 @@
  *
  *
  *
+ * create index:
+ *  db.users.createIndex({age:1}) // 1 for assending, -1 for descending
+ *  db.users.dropIndex({age:1}) // delete index
+ *  db.users.dropIndexes() // delete all indexes
  *
  * */

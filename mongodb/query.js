@@ -1,0 +1,1 @@
+var k = db.persons.findOne();
