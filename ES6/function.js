@@ -1,6 +1,31 @@
 /**
  * What is function:
- * everty js function is a Function object. you can check with this (function(){}).constructor === Function
+ * Function are fist-class object because thye have properties and methods.
+ * 
+ * Function Properties:
+ * 1. length    : this property count the length of parameters
+ * 2. name      : this property display the function name
+ * 3. arguments : Arguments is an Array like object accessible inside function. that contain the value of arguments
+ *                it alos has length property, callee and symbol.iterator method
+ *                it works differently in strict mode. it does no track default parameter, rest and structured
+ * 4. caller    : this has been depricated
+ * 5. prototype : {constructor:Function}
+ * 6. __proto__: f() // it inherit from Function.prototype
+ * 
+ * Function methods:
+ * 1. call
+ * 2. bind
+ * 3. apply
+ * 4. constructor
+ * 5. toString
+ * 
+ * 
+ * Ex:
+ * you can check with this (function(){}).constructor === Function
+ * 
+ * 
+ * Every function in javascript are function object.
+ * 
  *
  * Function() constructor create new function object
  * Calling the constructor directly can create functions dynamically
@@ -10,15 +35,6 @@
 
 /**
  * When you declare a function it has some build-in property and methods
- * Function Properties:
- * 1. length    : this property count the length of parameters
- * 2. name      : this property display the function name
- * 3. arguments : Arguments is an Array like object accessible inside function. that contain the value of arguments
- *                it alos has length property, callee and symbol.iterator method
- *                it works differently in strict mode. it does no track default parameter, rest and structured
- * 4. caller    : this has been depricated
- * 5. prototype : {}
- * 6. __proto__: f() // it inherit from Function.prototype
  * */
 
 

@@ -1,0 +1,101 @@
+In this lesson, we're going to define authentication and authorization.
+
+The difference between these two things and how they are represented in MongoDB.
+
+So first let's define these two terms.
+
+Authentication verifies the identity of a user.
+
+Authorization determines the verified users access to resources and operations.
+
+So let's say you're checking your bank account.
+
+Your account balances live in a database.
+
+But before you can read the balances the database needs to verify your identity as the user.
+
+So the server prompts the user to prove itself by asking the user, please enter your email address and password.
+
+The user then presents their username ilovecats@email.com and their password cats are my fav 1986.
+
+If at some point in the future this user decides that they want to change their username or change their password.
+
+That would be an example of updating this user's authentication.
+
+So after inputting the password in the username, the server will then verify this user's identity based on whether that user exists with those credentials.
+
+If the database does not recognize the credentials, it will send a message to the user saying that the authentication has failed.
+
+If the database does recognize the user's credentials then it automatically moves on to authorization.
+
+Once MongoDB verifies the identity of a user at that needs to determine this user's authorization.
+
+Coming back to our example, the database has verified the credentials for the user ilovecats@email.com.
+
+Now the database has to determine what level of access this user has.
+
+The actions that a given user is allowed to perform are referred to as privileges.
+
+In the case of a bank account or an ATM this user has access to their account balances.
+
+In other words, they are not authorized to read the balances of other users bank accounts.
+
+This user is also authorized to withdraw money from their account but there's a limit to how much money can be withdrawn each day.
+
+But you can contact your bank to raise this limit.
+
+Raising the withdrawal limit is an example of changing authorization without affecting the way that this user authenticates to the server.
+
+So now let's see how authorization and authentication are represented in MongoDB.
+
+On the screen is a command that creates a new user with a username and password.
+
+So the first item here is the db.createUser command.
+
+This is the command used to create new users.
+
+It only requires one parameter, the user document.
+
+The user document contains all the information that MongoDB saves about each user.
+
+The portion of the user document that is highlighted pertains to authentication.
+
+For this user, the user document contains user name account analytics and the password Lionel Messi 1987.
+
+Now the portion of the user document that is highlighted right now pertains to authorization.
+
+Below the credentials is an array field called roles.
+
+Roles are one of the primary ways of granting privileges to a user.
+
+Each role is an alias for a collection of privileges.
+
+The roles that you see here read and readWrite are built in roles, meaning that they're included with MongoDB being so you don't need to create these roles by yourself.
+
+MongoDB be created these roles so administrators can easily group privileges together.
+
+But admins also have the ability to create their own custom roles with any privileges that they choose.
+
+So the first role was the readRole on the accounts database.
+
+Having the role and no other privileges on the accounts database means that the account analytics user can read data from the accounts database but it can't write any new data.
+
+This user also has the readWrite role on the analytics database.
+
+This means that our user can read data and the analytics database as well as writing new data to that database.
+
+MongoDB's access control system allows us to issue permissions to users in this granular way.
+
+So administrators have greater control over what actions users are allowed to perform.
+
+Let's recap what we learned.
+
+Authentication is the process of determining who you are.
+
+The database prompts users for credentials to prove their trust and users can send a username and password as their credentials.
+
+Authorization is the process of determining what you can do.
+
+Different users have varying levels of database access.
+
+And MongoDB contains built in roles for specific users such as read and readWrite.

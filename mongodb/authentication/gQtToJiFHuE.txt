@@ -1,0 +1,103 @@
+In this lesson, we'll discuss creating the first user in MongoDB while authentication is enabled, and then we'll log in or authenticate as that user.
+
+So let's briefly discuss the scenario where authentication is disabled.
+
+Here the user is trying to create a new user, Matt, with the password I love cats.
+
+In the case where authentication is disabled, we can just create a user as soon as we connect to the database.
+
+The database won't enforce authentication so anyone can perform any actions that they want.
+
+However, most database deployments require authentication all the time.
+
+If authentication is being enforced, this user will not be able to run this Create user command.
+
+The database will say, who are you?
+
+And then prompt the user for their username and password.
+
+The issue is that there are no username and password combinations that the server would accept, because the server doesn't have any users yet.
+
+Essentially, we need a way of creating the very first user on the database while the database is still enforcing authentication.
+
+To get around this, we will use something called the localhost exception.
+
+And this is a new term, so let's discuss it.
+
+The localhost exception is an exception that allows you to create one single user without having to authenticate first.
+
+It says, that while authentication is enabled, allow for the creation of one user.
+
+This directly pertains to the scenario where authentication is enabled but no users exist yet.
+
+The caveat here is that it must be the very first user.
+
+If a user already exists in the database, the localhost exception cannot be used.
+
+The next important thing to note is that you must be connected via localhost in order to use the localhost exception.
+
+Localhost is a special type of connection that can only be made locally.
+
+Meaning that if you want to connect to a machine via localhost, you have to already have access to the physical machine.
+
+The idea is if we can't enforce authentication for creating the first user, we can at least ensure that whoever creates that first user has access to the physical server, where MongoDB is running.
+
+This is usually an administrator or some other database owner.
+
+OK.
+
+Now that we've discussed how the localhost exception works, let's use it to create our first database user.
+
+So I'm just going to print out the configuration file that I use to start MongoDB.
+
+You can see that I've already enabled authentication here.
+
+This means that MongoDB should prompt us to authenticate before we can do anything.
+
+However, there aren't any users on the server yet, which means that we'll need to use the localhost exception to create the very first user.
+
+So I'll connect via localhost to MongoDB.
+
+By the way, you can find the commands that I'm typing in the lecture notes for this lesson.
+
+You can use these commands as you complete the assignments throughout this course.
+
+So because we enabled the authentication this time, we can't run any operations without authenticating first, it's going to tell us that we're not authorized.
+
+The first user I create should always be a global user administrator, and I need to create this first user on the admin database.
+
+So I'm just going to switch to admin.
+
+So here's the command I'll use to create the very first user.
+
+I've chosen the name Global admin user, the password, which is secure password.
+
+And the only role that I've specified for this user is the user admin any database role on the admin database.
+
+And it looks like that was successful.
+
+So just as a reminder, the localhost exception is only available once.
+
+So if I try to create a second user right away it will tell me that I need to authenticate first.
+
+This is because we have created the very first user but we haven't actually authenticated as that user yet.
+
+So now I'm authenticated as a user with the role user admin any database.
+
+But if I want to run other cluster wide operations like replicating the data or distributing it, I need to create another user.
+
+So now that I'm authenticated I can create this second user.
+
+The role that I've assigned this user, cluster admin is one of the most powerful roles in the cluster and it's only available from the admin database.
+
+And it looks like that was successful.
+
+So now we have two users.
+
+We have our very first user used to administer other users and we also have a user to administer the cluster.
+
+So we would normally go on to create any additional users needed by the developers who use the database, but for now let's just recap.
+
+To create the initial database users in MongoDB while authentication is enabled, we have to connect to MongoDB via localhost, create a user administrator with the role user admin any database, and then authenticate as the new user administrator.
+
+And then we can go on to create additional users as the new user administrator.

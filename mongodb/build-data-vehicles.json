@@ -1,0 +1,174 @@
+[
+  {
+    "id": 1,
+    "label": "United States",
+    "value": "united_states",
+    "lang": "US_en",
+    "vehicles": [
+      {
+        "id": 1,
+        "label": "2018 Romeo Stelvio",
+        "value": "2018_romeo_stelvio",
+        "vin": "ZASFAKBN7J7B75440"
+      },
+      {
+        "id": 2,
+        "label": "2019 X3",
+        "value": "2019_x3",
+        "vin": "5UXTS3C58K0Z07709"
+      },
+      {
+        "id": 3,
+        "label": "2017 Envision",
+        "value": "2017_envision",
+        "vin": "LRBFXBSA8HD030776"
+      },
+      {
+        "id": 4,
+        "label": "2017 Escalade",
+        "value": "2017_escalade",
+        "vin": "1GYS3AKJ1HR376297"
+      },
+      {
+        "id": 5,
+        "label": "2018 Malibu",
+        "value": "2018_malibu",
+        "vin": "1G1ZE5SX9JF107541"
+      },
+      {
+        "id": 6,
+        "label": "2018 Silverado 1500",
+        "value": "2018_silverado_1500",
+        "vin": "3GCUKSEC4JG111299"
+      },
+      {
+        "id": 7,
+        "label": "2019 Pacifica",
+        "value": "2019_pacifica",
+        "vin": "2C4RC1FG2KR506382"
+      },
+      {
+        "id": 8,
+        "label": "2018 Durango GT",
+        "value": "2018_durango_gt",
+        "vin": "1C4RDHDG8JC145868"
+      },
+      {
+        "id": 9,
+        "label": "2017 500e (electric vehicle)",
+        "value": "2017_500e_(electric_vehicle)",
+        "vin": "3C3CFFGEXHT682355"
+      },
+      {
+        "id": 10,
+        "label": "2018 G80",
+        "value": "2018_g80",
+        "vin": "KMHGN4JE4JU246296"
+      },
+      {
+        "id": 11,
+        "label": "2018 Acadia",
+        "value": "2018_acadia",
+        "vin": "1GKKNXLSXJZ134371"
+      },
+      {
+        "id": 12,
+        "label": "2017 Ioniq Hybrid",
+        "value": "2017_ioniq_hybrid",
+        "vin": "KMHC85LC8HU049231"
+      },
+      {
+        "id": 13,
+        "label": "2017 Q50",
+        "value": "2017_q50",
+        "vin": "JN1CV7AP1HM640812"
+      },
+      {
+        "id": 14,
+        "label": "2018 Cherokee",
+        "value": "2018_cherokee",
+        "vin": "1C4PJLLB6JD523981"
+      },
+      {
+        "id": 15,
+        "label": "2018 Stinger",
+        "value": "2018_stinger",
+        "vin": "KNAE35LC9J6011977"
+      },
+      {
+        "id": 16,
+        "label": "2018 CX-5",
+        "value": "2018_cx_5",
+        "vin": "JM3KFACM7J0312174"
+      },
+      {
+        "id": 17,
+        "label": "2019 Hardtop 2 Door",
+        "value": "2019_hardtop_2_door",
+        "vin": "WMWXM9C53K2F66482"
+      },
+      {
+        "id": 18,
+        "label": "2018 Maxima",
+        "value": "2018_maxima",
+        "vin": "1N4AA6AP9JC372362"
+      },
+      {
+        "id": 19,
+        "label": "2018 1500",
+        "value": "2018_1500",
+        "vin": "1C6RR6NT4JS147387"
+      },
+      {
+        "id": 20,
+        "label": "2018 Outback",
+        "value": "2018_outback",
+        "vin": "4S4BSACC4J3304636"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "label": "Canada",
+    "value": "canada",
+    "lang": "CA_en",
+    "vehicles": [
+      {
+        "id": 1,
+        "label": "2019 Giulia",
+        "value": "2019_giulia",
+        "vin": "ZARFANBN1K7601883"
+      },
+      {
+        "id": 2,
+        "label": "2019 Pacifica",
+        "value": "2019_pacifica",
+        "vin": "2C4RC1BG1KR609766"
+      },
+      {
+        "id": 3,
+        "label": "2019 Grand Caravan",
+        "value": "2019_grand_caravan",
+        "vin": "2C4RDGBG3KR630490"
+      },
+      {
+        "id": 4,
+        "label": "2019 124 Spider",
+        "value": "2019_124_spider",
+        "vin": "JC1NFAEK6K0141370"
+      },
+      {
+        "id": 5,
+        "label": "2019 Compass",
+        "value": "2019_compass",
+        "vin": "3C4NJDBB0KT696163"
+      },
+      {
+        "id": 6,
+        "label": "2019 1500 Classic",
+        "value": "2019_1500_classic",
+        "vin": "1C6RR7FG8KS594863"
+      }
+    ]
+  }
+]

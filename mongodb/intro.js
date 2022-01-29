@@ -82,7 +82,7 @@
  *     mongoimport sales.json -d database -c collection --jsonArray --drop
  * 2. Exporting:
  *    mongoexport --uri="mongodb+srv://<your username>:<your password>@<your cluster>.mongodb.net/sample_supplies" --collection=sales --out=sales.json
- *
+ *    mongoexport --uri="mongodb://pradeep:pradeep123@localhost:20017/courses" --out courses
  * BSON:
  * 1. Importing:
  *    mongorestore --uri "mongodb+srv://<your username>:<your password>@<your cluster>.mongodb.net/sample_supplies"  --drop dump.bson
@@ -98,6 +98,12 @@
  * Data explorer:
  *
  * */
+
+db.users.updateMany({ "skills.title": "HTML" },
+  {
+    $set: { "skills.$.active": true }
+  }
+)
 
 
 
@@ -127,5 +133,6 @@
            ad. begin with the system. prefix. (Reserved for internal use.)
  *
  * */
+
 
 

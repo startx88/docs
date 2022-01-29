@@ -54,9 +54,9 @@ const user = { name: "pradeep", age: 22 } // new Object({ name: "pradeep", age: 
  */
 
 // Object initializer
-const user = new Object() // return {} object
-user.name = "pradeep";
-user.age = 22;
+// const user = new Object() // return {} object
+// user.name = "pradeep";
+// user.age = 22;
 
 
 
@@ -82,8 +82,20 @@ user.age = 22;
 //   return newObject;
 //}
 
-// using array 
+// using array
 
 
 // Favor composition over inheritance
 
+function createUser(name) {
+  return {
+    name
+  }
+}
+
+const x = createUser('Pradeep')
+console.log(x)
+console.dir(createUser.constructor)
+
+const y = new Function('x', `this.name=x; return this.name;`);
+console.log(y.constructor)

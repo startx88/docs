@@ -187,3 +187,20 @@ db.persons.aggregate([
  *
  * */
 
+
+db.numbers.aggregate([
+  {
+    $project: {
+      sum: {
+        $divide: [
+          {
+            $subtract: [
+              { $multiply: ["$a", 10] },
+              { $multiply: ["$b", 10] }
+            ]
+          }, 10
+        ]
+      },
+    }
+  }
+])
