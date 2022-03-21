@@ -1,5 +1,100 @@
 /**
- * What is nginx
+ * What is nginx:
+ * ------------------------------
+ * Nginx is more than a web server. 
+ * Nginx is one of the most popular web server available in the industry.
+ * Nginx was written specifically to address the performance limitations of Apache Web Servers. (c10k problem)
+ * 
+ * 
+ * What is a web server:
+ * ------------------------------
+ * The term web server can refer to hardware or software, or both of them working together.
+ * To publish a website, you need either a static or a dynamic web server..
+ * A Web server is a program that uses http(Hypertext transfer protocol) to serve the files that form web pages to users, in response to their requests.
+ * 
+ * There are many popular web servers.
+ * a. Apache
+ * b. Nginx
+ * c. IIS
+ * 
+ * Nginx vs Apache:
+ * ------------------------------
+ * 
+ * 
+ * 
+ * Programmable:
+ *  Nginx was designed by developers for developers. Feature rich and exensible with dynamic module and nginx js.
+ * 
+ * Automatable:
+ *  Automation is trivial with nginx, nginx config are simple flat files, easily templated and deployed using DevOps tools.
+ * 
+ * Portable:
+ *  Nginx fits on a floppy disk!, Deploy on Bare metal virtual machine, cloude environments and containers.
+ * 
+ * Manageable:
+ *  Nginx as a lightweight dataplane can be managed using prefered tool, on Nginx controller for monitoring, analytics and configuration management.
+ * 
+ * Flexible:
+ *  (re)size NGINX vertically or horizontal in a multi-tenant or per-application architecture.
+ * 
+ * 
+ * 
+ * Features:
+ * 1. Load balancer
+ * 2. Web Server
+ * 3. Content cache
+ * 4. Security controls
+ * 5. Web application firewall
+ * 6. Dynamic modules
+ * 7. Monitoring
+ * 10. High Availability
+ * 11. Kuberneties ingress controller
+ * 12. Programmability
+ * 13. Streaming Media
+ * 14. API Gateway
+ * 
+ * 
+ * NGINX and NGINX Plus are similar to other services in that they use a text-based configuration file written in a particular format.
+ * by default file name is "Nginx.conf" and for NGINX Plus is placed in the /etc/nginx directory.
+ * For the nginx open source, the location depends on the packages system used to install nginx and the OS.
+ * It is typically one of 
+ * 1. /usr/local/nginx/conf
+ * 2. /etc/nginx
+ * 3. /usr/local/etc/nginx
+ * 
+ * 
+ * 
+ * Directives:
+ * ----------------------------------------------
+ * The configuration file consists of directives and their parameters. simple (single-line) directives each end with semicolon.
+ * Other directives act as containers that group together related directives, enclosing them in curly braces {} these are often referred to as blocks.
+ * 
+ * Ex:
+ *  user                nobody;
+ *  error_log           logs/error.log notice;
+ *  worker_processes    1;
+ * 
+ * 
+ * Feature-Specific Configuration Files:
+ * ----------------------------------------------
+ * To make the configuration easier to maintain, we recommonded that you split it into as set of feature-specific files
+ * stored in the /etx/nginx/conf.d directory and use the include directive in the main nginx.conf.
+ * 
+ * Ex:
+ *  include         conf.d/http;
+ *  include         conf.d/stream;
+ *  include         conf.d/exchange-enhanced;
+ * 
+ * 
+ * Contexts:
+ * -----------------------------------------------
+ * a few top-level directives, referred to as contexts, group together the directives that apply to different traffic types:
+ * 1. events:   General connection proccessing
+ * 2. http:     HTTP traffic
+ * 3. mail:     Mail traffic
+ * 4. stream:   TCP and UDP traffic
+ * 
+ * 
  */
 
 
@@ -106,5 +201,48 @@
  * 9. fastcgi_cache_methods             GET | HEAD | POST ...; default fastcgi_cache_methods GET HEAD;
  *    If the client request method is listed in this directive then the response will be cached. “GET” and “HEAD” methods are always added to the list, though it is recommended to specify them explicitly.
  * 
- *10.  
+ * 10. fastcgi_cache                     zone | off; Default:	fastcgi_cache off;
+ *    Defines a shared memory zone used for caching   
+ * 
+ * 11. fastcgi_cache_bypass              string 
+ *     Defines conditions under which the response will not be taken from a cache. If at least one value of the string parameters is not empty and is not equal to “0” then the response will not be taken from the cach 
+ *    ex: 
+ *      fastcgi_cache_bypass $cookie_nocache $arg_nocache$arg_comment;
+ *      fastcgi_cache_bypass $http_pragma    $http_authorization;
+ * 
+ * 12. fastcgi_cache_valid               [code ...] time
+ *     Sets caching time for different response codes. For example, the following directives
+ *     ex:  fastcgi_cache_valid 200 302 10m;
+ * 
+ * 13. fastcgi_no_cache                  string 
+ *     ex: fastcgi_no_cache              1
+ * 
+ * 
+ * 
+ * HTTP2: https://www.nginx.com/blog/nginx-1-13-9-http2-server-push/
+ * 1. http2 is a binary protocol and where http is textual protocol.
+ * 2. Compressed header
+ * 3. Persistent Connections
+ * 4. Multiplex Streaming
+ * 5. Server push
+ * 
+ * 
+ * configuration:
+ * server {
+    # Ensure that HTTP/2 is enabled for the server        
+    listen 443 ssl http2;
+
+    ssl_certificate ssl/certificate.pem;
+    ssl_certificate_key ssl/key.pem;
+
+    root /var/www/html;
+
+    # whenever a client requests demo.html, also push
+    # /style.css, /image1.jpg and /image2.jpg
+    location = /demo.html {
+        http2_push /style.css;
+        http2_push /image1.jpg;
+        http2_push /image2.jpg;
+    }
+}
  */
