@@ -87,15 +87,61 @@ const user = { name: "pradeep", age: 22 } // new Object({ name: "pradeep", age: 
 
 // Favor composition over inheritance
 
-function createUser(name) {
-  return {
-    name
-  }
+// function createUser(name) {
+//   return {
+//     name
+//   }
+// }
+
+// const x = createUser('Pradeep')
+// console.log(x)
+// console.dir(createUser.constructor)
+
+// const y = new Function('x', `this.name=x; return this.name;`);
+// console.log(y.constructor)
+
+
+
+/**
+ * Javscript prototype:
+ * Protype is a property a function has in javscript.
+ * 
+ */
+
+function Animal(name, energy) {
+  const animal = Object.create(Animal.prototype);
+  animal.name = name;
+  animal.energy = energy;
+  return animal;
 }
 
-const x = createUser('Pradeep')
-console.log(x)
-console.dir(createUser.constructor)
+function AnimalWithNew(name, energy) {
+  this.name = name;
+  this.energy = energy;
+}
 
-const y = new Function('x', `this.name=x; return this.name;`);
-console.log(y.constructor)
+Animal.prototype.sleep = function () {
+  return `${this.name} is sleeping`;
+}
+Animal.prototype.eat = function () {
+  return this.name + 'is eating';
+}
+Animal.prototype.play = function () {
+  return this.name + ' has ' + this.energy + 'energy'
+}
+
+AnimalWithNew.prototype.sleep = function () {
+  return `${this.name} is sleeping`;
+}
+AnimalWithNew.prototype.eat = function () {
+  return this.name + 'is eating';
+}
+AnimalWithNew.prototype.play = function () {
+  return this.name + ' has ' + this.energy + 'energy'
+}
+
+const leo = Animal('Leo', 500);
+const lion = new AnimalWithNew('Lion', 500)
+
+
+
