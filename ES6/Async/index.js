@@ -8,5 +8,12 @@
  * 5. Generators / coroutines
  * 6. Event Reactive (Observables)
  * 7. CSP (channel-oriented concurrency)
+ * 
+ */
+
+/**
+ * Parallel vs Async:
+ * 
+ * 
  */
 
