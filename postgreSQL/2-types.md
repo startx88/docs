@@ -145,5 +145,42 @@ It has 5 main temporal data types.
         employees;
     ```
 
-- `TIME:`
-  Stores time of day, It uses 8 bytes and range from `00:00:00 to 24:00:00`.
+- `TIME:`<br>
+  Stores time of day,<br> It uses 8 bytes <br> Range from `00:00:00 to 24:00:00`. <br>
+  PostgreSQL `TIME with time zone` type
+
+  - `Get current time:`
+
+    ```PostgreSQL
+     1. SELECT CURRENT_DATE;
+     2. SELECT CURRENT_DATE(3);
+    ```
+
+  - `Get localtime:`
+
+    ```PostgreSQL
+     1. SELECT LOCALTIME;
+     2. SELECT LOCALTIME(0);
+    ```
+
+  - `Convert time to timezone:`
+    ```PostgreSQL
+     1. SELECT CURRENT_DATE AT TIME ZONE 'GMT';
+     2. SELECT LOCALTIME AT TIME ZONE 'UTC-7';
+    ```
+  - `Extract hours, minutes, seconds from a time value:`
+
+    ```PostgreSQL
+      SELECT
+        LOCALTIME,
+        EXTRACT (HOUR FROM LOCALTIME) as hour,
+        EXTRACT (MINUTE FROM LOCALTIME) as minute,
+        EXTRACT (SECOND FROM LOCALTIME) as second,
+        EXTRACT (milliseconds FROM LOCALTIME) as milliseconds,
+    ```
+
+  - `Arithmetic operations on time values:`
+    ```PostgreSQL
+     1. SELECT time '10:00' - time '02:00' AS result;
+     2. SELECT LOCALTIME + interval '2 hours' AS result;
+    ```
