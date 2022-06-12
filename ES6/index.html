@@ -10,7 +10,25 @@
 
 <body>
   <div id="root"></div>
-  <script src="./array.js"></script>
+  <script>
+    function Equality(first, second) {
+      let x = first;
+      let y = second;
+
+
+
+
+
+      console.log(isNegativeZero(x), isNegativeZero(0))
+
+
+      function isNegativeZero(num) {
+        return num <= -0 && num / -0 == -Infinity
+      }
+    }
+
+    Equality(-0, -0)
+  </script>
 </body>
 
 </html>
