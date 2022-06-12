@@ -30,9 +30,9 @@ You can choose `boolean` or `bool` keyword.
 **`Character:`**<br>
 It has three char data types.
 
-- char(n) => fixed-length, add pad space if shorter then given column length.
-- varchar(n) => variable-length, does not add pad space if string is shorter then colum length.
-- text => unlimited length.
+- `char(n)` => fixed-length, add pad space if shorter then given column length.
+- `varchar(n)` => variable-length, does not add pad space if string is shorter then colum length.
+- `text` => unlimited length.
 
 <br>
 
@@ -87,3 +87,63 @@ It is provide two distinct types of numbers:
   - `float(n):` Whose precision, at least , n up to max `8 bytes`.
   - `real or float8:` 4 byte floating point number.
   - `numeric or numeric(p,s):` p for digit, s for decimal.
+
+<br>
+
+**`Temporal:`**
+It is allow you to store date and /or time data.
+It has 5 main temporal data types.
+
+- `DATE:` <br>
+  Stores date values, It uses 4 bytes, <br> It uses the `yyyy-mm-dd` format. <br> Lowest and Heiest value is `4713 BC` - `5874897 AD`. <br> If you want to use default value then you can to like this
+  `DATE NOT NULL DEFAULT CURRENT_DATE`
+
+  `Example:`
+
+  ```PostgreSQL
+  CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    insertAt DATE NOT NULL DEFAULT CURRENT_DATE
+  )
+  ```
+
+  `PostgreSQL Date functions:`
+
+  - `Get the current date:`
+    ```PostgreSQL
+     1. SELECT NOW()::date;
+     2. SELECT CURRENT_DATE;
+    ```
+  - `Format date:`
+    ```PostgreSQL
+     1. SELECT TO_CHAR(NOW() :: DATE, 'dd/mm/yyyy')
+     2. SELECT TO_CHAR(NOW() :: DATE, 'Mon dd, yyyy')
+    ```
+  - `Get interval between two dates:`
+    ```PostgreSQL
+     1. SELECT first_name, NOW() - hire_date as diff FROM users;
+    ```
+  - `Calculate ages in year, months and days:`
+
+    ```PostgreSQL
+     1. SELECT user_id, first_name, AGES(dob) FROM users;
+    ```
+
+    AGE() - It subtract the dob into the CURRENT_DATE.
+
+  - `Extract year, quarter, month, week, day from a date value:`
+    ```PostgreSQL
+      SELECT
+        employee_id,
+        first_name,
+        last_name,
+        EXTRACT (YEAR FROM birth_date) AS YEAR,
+        EXTRACT (MONTH FROM birth_date) AS MONTH,
+        EXTRACT (DAY FROM birth_date) AS DAY
+      FROM
+        employees;
+    ```
+
+- `TIME:`
+  Stores time of day, It uses 8 bytes and range from `00:00:00 to 24:00:00`.
