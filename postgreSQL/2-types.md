@@ -184,3 +184,308 @@ It has 5 main temporal data types.
      1. SELECT time '10:00' - time '02:00' AS result;
      2. SELECT LOCALTIME + interval '2 hours' AS result;
     ```
+
+- `TIMESTAMP:`<br>
+  PostgreSQL provide two timestamp. `TIMESTAMP` and `TIMESTAMPZ`
+
+  You can check timezone in PostgreSQL [System Catalogs](https://www.postgresql.org/docs/current/catalogs.html).
+
+  - It has `pg_timezone_names`
+
+  `Example:`
+
+  ```PostgreSQL
+    SELECT * FROM pg_timezone_names;
+  ```
+
+  <br>
+
+  - `TIMESTAMP:` Without timezone.
+  - `TIMESTAMPZ:` With timezone.
+
+  <br>
+
+  **Crate table that consist of both `timestamp` and `timestampz`**:
+
+  ```PostgreSQL
+      CREATE TABLE timestamp_demo (
+        ts TIMESTAMP,
+        tstz TIMESTAMPTZ
+      );
+  ```
+
+  Show current `timezone`:
+
+  ```PostgreSQL
+    SHOW TIMEZONE;
+  ```
+
+  change `timezone:`
+
+  ```PostgreSQL
+
+    SET timezone='Asia/Kolkata';
+  ```
+
+  Timestamp functions:
+
+  - `NOW():` To get the current timestamp
+
+    ```PostgreSQL
+      SELECT NOW();
+
+      <-- OR -->
+
+      SELECT CURRENT_TIMESTAMP;
+    ```
+
+    `Note:` `CURRENT_TIMESTAMP` and `CURRENT_TIME` return the current time with the time zone.
+
+  - `TIMEOFDAY:` To get the time of day in the string format
+
+    ```PostgreSQL
+      SELECT TIMEOFDAY();
+    ```
+
+  - `Convert time to timezone:`
+
+    ```PostgreSQL
+      SELECT timezone('America/New_York','2016-06-01 00:00');
+
+      <-- OR -->
+
+      SELECT timezone('America/New_York','2016-06-01 00:00'::timestamptz);
+    ```
+
+- `INTERVAL:` <br>
+  It allows you to store and manipulate a period of time in years, months, days, hours, minutes, seconds.
+
+  An interval value requires `16 bytes` storage size that can store `a period` with the allowed range from `-178,000,000 years to 178,000,000 years`.
+
+  `Example:`
+
+  ```PostgreSQL
+  interval '2 months ago';
+  interval '3 hours 20 minutes';
+  ```
+
+  `Internally,` PostgreSQL stores interval values as `months`, `days` and `seconds`. The month and days are integer value while seconds can have in fractions.
+
+  The interval values are very useful when doing date or time arithmetic.
+
+  `Example:`<br>
+  if you want to know the time of 3 hours 2 minutes ago at the current time of last year
+
+  ```PostgreSQL
+    SELECT
+      now(),
+      now() - INTERVAL '1 year 3 hours 20 minutes'
+             AS "3 hours 20 minutes ago of last year";
+  ```
+
+  `PostgreSQL interval input format syntax:`
+
+  ```
+    quantity unit [quantity unit...] [direction]
+  ```
+
+  where -
+
+  - `quantity:` is a `number`, sign `+` or `-`.
+  - `unit:` can be any of `millennium`, `century`, `decade`, `year`, `month`, `week`, `day`, `hour`, `minute`, `second`, `millisecond`, `microsecond`
+  - `direction:` can be `ago` or empty string `''`.
+
+    `Example:`
+
+    ```PostgreSQL
+    INTERVAL '1 year 2 months 3 days';
+    INTERVAL '2 weeks ago';
+    ```
+
+    <br>
+
+  `ISO 8601 interval format:`
+
+  `Syntax:`
+
+  ```
+    P quantity unit [ quantity unit ...] [ T [ quantity unit ...]]
+  ```
+
+  In this format, the `interval` value must start with the letter` P`. The letter` T` is for determining time-of-day unit.
+
+      <br>
+
+  `Abbreviation Description:`
+
+  | Abbreviation | Description                |
+  | ------------ | -------------------------- |
+  | Y            | Years                      |
+  | M            | Months (in the date part)  |
+  | W            | Weeks                      |
+  | D            | Days                       |
+  | H            | Hours                      |
+  | M            | Minutes (in the time part) |
+  | S            | Seconds                    |
+
+  `Example:`
+
+  ```PostgreSQL
+   SELECT INTERVAL 'P6Y5M4DT3H2M1S';
+
+   <-- OR -->
+
+   SELECT INTERVAL '1 years 4 months 5 days 2 hours 10 minutes 1 second';
+  ```
+
+  `Set interval:`
+
+  ```PostgreSQL
+  SET intervalstyle = 'sql_standard';
+
+  <-- OR -->
+
+  SET intervalstyle = 'postgres_verbose';
+
+  <-- OR -->
+
+  SET intervalstyle = 'iso_8601';
+  ```
+
+  `Interval operations and functions:`
+
+  - `Interval operators:` (+,-,\*)
+
+    ```PostgreSQL
+
+      SELECT
+        INTERVAL '2h 50m' + INTERVAL '10m'; -- 03:00:00
+
+      SELECT
+        INTERVAL '2h 50m' - INTERVAL '50m'; -- 02:00:00
+
+      SELECT
+        600 * INTERVAL '1 minute'; -- 10:00:00
+    ```
+
+  - `Convert interval into string:` use TO_CHAR();
+
+    `Syntax:`
+
+    ```
+    TO_CHAR(interval,format)
+
+    ```
+
+    `Example:`
+
+    ```PostgreSQL
+
+      SELECT  TO_CHAR(INTERVAL '17h 20m 05s', 'HH24:MI:SS');
+
+    ```
+
+  - `Extract data from interval:`
+
+    `Syntax:`
+
+    ```
+    EXTRACT(field FROM interval)
+    ```
+
+    `Example:`
+
+    ```PostgreSQL
+
+      SELECT EXTRACT(YEARS FROM INTERVAL   '3 years 5 months 10 days 2 hours 40 minutes')
+    ```
+
+  - `Adjust interval values:`
+    PostgreSQL provide two functions `justifydays` and `justifyhours`. these two function adjust your `30-day as 1 month` and` 24-hour as 1 day`.
+
+    `Example:`
+
+    ```PostgreSQL
+
+      SELECT
+        justify_days(INTERVAL '30 days'),
+        justify_hours(INTERVAL '24 hours');
+
+
+      <-- OR -->
+
+      SELECT
+        justify_interval(interval '1 year -1 hour');
+
+    ```
+
+<br>
+
+**`Array:`** <br>
+PostgreSQL also provide an array data type where you can declare integer and string of array.
+
+`Example:`
+
+```PostgreSQL
+  CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    name VARCHAR(50),
+    skills VARCHAR [], <-- array varchar -->
+  );
+
+
+  INSERT INTO users (name, skills)
+    VALUES ('pradeep',ARRAY ['HTML','CSS','JS']);
+```
+
+`Result:`
+
+| user_id | name    | skills        |
+| ------- | ------- | ------------- |
+| 1       | Pradeep | {HTML,CSS,JS} |
+
+`Qyery data based on skills:`
+
+```PostgreSQL
+  SELECT name, skills [0] FROM users;
+
+  <-- OR -->
+
+  SELECT name, skills FROM users where skills [ 3 ] = 'HTML';
+
+```
+
+`Modify array:`
+
+```PostgreSQL
+
+  UPDATE users
+  SET skills [0] = 'HTML5'
+  WHERE user_id=1;
+```
+
+`Search in array:`
+We use `ANY()` function.
+
+```PostgreSQL
+
+  SELECT name, skills
+  FROM users
+  WHERE
+    'HTML5'= ANY (skills)
+```
+
+`Expand Array:`
+The `unnest()` function to expand an array to a list of rows.
+
+```PostgreSQL
+
+  SELECT name, unnest(skills)
+  FROM users
+  WHERE
+    'HTML5'= ANY (skills)
+```
+
+<br>
+
+**`JSON type:`**
