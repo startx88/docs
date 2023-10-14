@@ -16,9 +16,9 @@
  *
  * ** Avoid side effects **
  *
- * // this function is not pure.
- * // this using global variable.
- * // using global scoped variable.
+ *  this function is not pure.
+ *  this using global variable.
+ *  using global scoped variable.
  * let cnt=0;
  * let increment = function(){
  *   cnt++;
